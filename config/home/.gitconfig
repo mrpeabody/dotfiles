@@ -1,0 +1,23 @@
+[push]
+	default = simple
+
+[merge]
+	tool = vimdiff
+	conflictstyle = diff3
+
+[difftool]
+	prompt = false
+    trustExitCode = true
+
+[alias]
+	d = difftool
+
+[core]
+	pager = vim -c PAGER -
+
+[init]
+	defaultBranch = master
+
+[color]
+	ui = auto
+	status = always
