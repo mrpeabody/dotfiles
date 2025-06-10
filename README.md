@@ -8,6 +8,26 @@
 This way, config files are linked to corresponding places in `$HOME`. Settings then
 are updated along with this repository.
 
+Simply run the `setup.sh` script to get all the settings linked:
+
+```
+./scripts/setup.sh
+```
+
+It will do the following:
+
+- Link `.bashrc` to your home (`~`) directory
+  - Notice: `~/.bashrc.local` will be loaded if it exists so that's a great place
+  to add your own aliases/functions/paths, etc
+- Link `.tmux.conf` to your home (`~`) directory and setup `tmux`
+- Link appplication settings to the `~/.config` directory
+- *For Linux distros*: create improved application launchers in `~/.local/share/applications`
+- *For Arch-based Linux distros*: chromium/electron app flags will be copied to `~/.config`
+
+Below you can find more details about each step, and instructions on how to do these steps separately,
+if so desired.
+
+
 #### Bash
 
 Link `config/home/.bashrc`:
