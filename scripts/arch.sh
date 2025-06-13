@@ -3,11 +3,11 @@ set -eo pipefail
 
 
 # install main packages
-sudo pacman --needed --noconfirm -S git cmake gcc ctags curl base-devel
+sudo pacman --needed --noconfirm -S less git cmake gcc ctags curl base-devel
 sudo pacman --needed --noconfirm -S python-pip python-wheel python-setuptools
 sudo pacman --needed --noconfirm -S python-flake8 autopep8
 sudo pacman --needed --noconfirm -S wl-clipboard net-tools
-yes | sudo pacman --needed -S gvim
+yes | sudo pacman --needed -S gvim || true
 sudo pacman --needed --noconfirm -S stow kitty mpv tmux direnv flameshot
 
 
