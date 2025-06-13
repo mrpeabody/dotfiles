@@ -1,24 +1,61 @@
-# Dotfiles: simple edition
+# Dotfiles
 
-- crossplatform: mac/linux/wsl
-- designed to be used with `stow`
+- Crossplatform: MacOS/Linux/WSL
+- Easy to use and modify
+- [**GNU Stow**](https://www.gnu.org/software/stow/) based
 
-## Managed settings (recommended)
 
-This way, config files are linked to corresponding places in `$HOME`. Settings then
-are updated along with this repository.
+## Quick setup
 
-Simply run the `setup.sh` script to get all the settings linked:
+- clone this repo:
+
+```bash
+git clone https://github.com/mrpeabody/dotfiles
+```
+
+- run the `setup.sh` script:
 
 ```
-./scripts/setup.sh
+./scripts/setup.sh --nvm --zsh
 ```
 
-It will do the following:
+That's it! This way, all required packages will be installed, config files are linked to corresponding places in `$HOME`.
+Settings then are now synced with this repository.
 
-- Link `.bashrc` to your home (`~`) directory
-  - Notice: `~/.bashrc.local` will be loaded if it exists so that's a great place
-  to add your own aliases/functions/paths, etc
+##### Optional flags:
+
+- `--nvm` -- install, and enable [NVM](https://github.com/nvm-sh/nvm?tab=readme-ov-file#intro). 
+  Comes with the current LTS version of [Node.js](https://nodejs.org/en/).
+- `--zsh` -- install, configure, and enable [ZSH](https://en.wikipedia.org/wiki/Z_shell) shell. 
+  Comes with [oh-my-zsh](https://ohmyz.sh/) and [direnv](https://direnv.net/) enabled.
+
+
+**Bonus**: Arch users get [Paru](https://github.com/Morganamilo/paru) fully set up and configured for effortless AUR.* 
+It makes sense to clone and run the script in chroot after installing Arch, before rebooting into the installed system.
+
+**Bonus**: MacOS users get [Homebrew](https://brew.sh/) -- The Missing Package Manager for macOS.
+
+
+### Semi-automatic setup
+
+You can run individual scripts if you don't need the whole shebang. Available scripts are:
+
+- `scripts/install.sh` -- installs packages, such as dev dependencies, Python3, TMUX, and so on.
+  - For each distro/OS, there's a corresponding intallation script, for example: `scripts/arch.sh`
+- `scripts/link.sh` -- links configuration files to proper locations in the home directory, including `~/.bashrc` or `~/.zshrc`.
+
+Both scripts support optional flags:
+
+- `--nvm` -- install, and enable [NVM](https://github.com/nvm-sh/nvm?tab=readme-ov-file#intro). 
+  Comes with the current LTS version of [Node.js](https://nodejs.org/en/).
+- `--zsh` -- install, configure, and enable [ZSH](https://en.wikipedia.org/wiki/Z_shell) shell. 
+  Comes with [oh-my-zsh](https://ohmyz.sh/) and [direnv](https://direnv.net/) enabled.
+
+`scripts/link.sh` will do the following:
+
+- Link `.bashrc` or `.zshrc` to your home (`~`) directory
+  - Notice: `~/.bashrc.local` or `~/.zshrc.local` will be loaded if it exists so that's a great place
+    to add your own aliases/functions/paths, etc
 - Link `.tmux.conf` to your home (`~`) directory and setup `tmux`
 - Link appplication settings to the `~/.config` directory
 - *For Linux distros*: create improved application launchers in `~/.local/share/applications`
@@ -28,18 +65,20 @@ Below you can find more details about each step, and instructions on how to do t
 if so desired.
 
 
-#### Bash
+### Manual setup
 
-Link `config/home/.bashrc`:
+##### Bash / ZSH
+
+Link `config/home/.bashrc` or `config/home/.zshrc` (recommended):
 
 ```bash
-ln -s $PWD/config/home/.bashrc ~/.bashrc
+ln -s $PWD/config/home/.zshrc ~/.zshrc
 ```
 
-For extra paths, functions, aliases, and so on, add `~/.bashrc.local`. The linked `.bashrc` file
-is configured to load `~/.bashrc.local` automatically, if it exists.
+For extra paths, functions, aliases, and so on, add `~/.zshrc.local`. The linked `.zshrc` file
+is configured to load `~/.zshrc.local` automatically, if it exists.
 
-Here's an example of a `~/.bashrc.local` file:
+Here's an example of a `~/.zshrc.local` file:
 
 ```bash
 # global limits
@@ -63,7 +102,7 @@ eval "$(direnv hook bash)"
 source /usr/share/nvm/init-nvm.sh
 ```
 
-#### Tmux
+##### TMUX
 
 Link `config/home/.tmux.conf`:
 
@@ -80,13 +119,17 @@ git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 Start `tmux` and do `Ctrl + B`, then `Shift+I` to install plugins/themes.
 
 
-#### Applications
+##### Applications
 
-Currently, the following apps' configuration are available:
+Currently, the following apps are installed and configured:
 
-- **Kitty** (terminal)
-- **Flameshot** (screenshots)
-- **MPV player** (hardware-accelerated videos/audios/youtube/streaming)
+- *For MacOS*: [**Homebrew**](https://brew.sh/) (The Missing Package Manager for macOS)
+- *For Arch-based Linux distros*: [**Paru**](https://github.com/Morganamilo/paru) (AUR Package manager)
+- [**Kitty**](https://sw.kovidgoyal.net/kitty/) (GPU-accelerated crossplatform terminal emulator)
+- [**Flameshot**](https://flameshot.org/) (best screenshot tool)
+- [**MPV player**](https://mpv.io/) (GPU-accelerated crossplatform video/audio/YouTube/streaming player)
+
+More apps will be added soon.
 
 To install all app configs, navigate to `config` directory:
 
@@ -108,7 +151,7 @@ stow -t ~/.config --ignore="home|mpv|flameshot" .
 ```
 
 
-#### Application launchers (Linux only)
+##### Application launchers (Linux only)
 
 There are a few improved application launchers (`.desktop` files) that improve overall experience with some apps:
 
@@ -126,3 +169,8 @@ then copy launchers:
 ```bash
 cp -r launchers/* ~/.local/share/applications/.
 ```
+
+
+## I want my own thing!
+
+Fork, modify, and enjoy!

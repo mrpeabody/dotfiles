@@ -38,7 +38,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then      # Linux/WSL
     elif [ -f "/etc/redhat-release" ]; then   # Redhat 9+/Fedora/Nobara
         sh "$BASE_DIR/scripts/redhat.sh" "$@"
     else                                      # Ubuntu/Debian/Mint
-        sh "$BASE_DIR/scripts/ubuntu.sh" "$@"
+        /bin/bash "$BASE_DIR/scripts/ubuntu.sh" "$@"
     fi
 elif [[ "$OSTYPE" == "darwin"* ]]; then       # MacOS
     sh "$BASE_DIR/scripts/macos.sh" "$@"
@@ -48,7 +48,7 @@ fi
 # Detect if a user wants ZSH. For Macos, it's always ZSH
 if [[ "$*" == *"--zsh"* || "$OSTYPE" == "darwin"* ]]; then
     echo "Installing oh-my-zsh..."
-    KEEP_ZSHRC=yes RUNZSH=no CHSH=yes \
+    KEEP_ZSHRC=yes RUNZSH=no CHSH=no \
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 else
     echo "Installing oh-my-bash..."
@@ -60,4 +60,4 @@ echo "Installing tmux package manager..."
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 
-echo "Packages have been installed. Please reboot to apply all the changes."
+echo "Packages have been installed."

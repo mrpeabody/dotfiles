@@ -34,12 +34,16 @@ case "$OS" in
     *) platform="unknown" ;;
 esac
 
+
 # Base dir is where the script is located
 BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 mkdir -p "$HOME/.config"
 
-echo "Stowing app configs..."
-stow -t "$HOME/.config" -d "$BASE_DIR/config" --ignore="home" .
+if command -v stow &> /dev/null; then
+    echo "Stowing app configs..."
+    stow -t "$HOME/.config" -d "$BASE_DIR/config" --ignore="home" .
+fi
+
 
 # Optional linux-only steps
 if [[ "$platform" == "linux" ]]; then
