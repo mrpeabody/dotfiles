@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -euo pipefail
+set -eo pipefail
 
 ################################################################################
 # Help                                                                         #
@@ -34,14 +34,14 @@ BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 echo "Installing OS-specific packages..."
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then      # Linux/WSL
     if [ -f "/etc/arch-release" ]; then       # Arch/Manjaro/CachyOS/EndeavorOS
-        sh "$BASE_DIR/arch.sh" "$@"
+        sh "$BASE_DIR/scripts/arch.sh" "$@"
     elif [ -f "/etc/redhat-release" ]; then   # Redhat 9+/Fedora/Nobara
-        sh "$BASE_DIR/redhat.sh" "$@"
+        sh "$BASE_DIR/scripts/redhat.sh" "$@"
     else                                      # Ubuntu/Debian/Mint
-        sh "$BASE_DIR/ubuntu.sh" "$@"
+        sh "$BASE_DIR/scripts/ubuntu.sh" "$@"
     fi
 elif [[ "$OSTYPE" == "darwin"* ]]; then       # MacOS
-    sh "$BASE_DIR/macos.sh" "$@"
+    sh "$BASE_DIR/scripts/macos.sh" "$@"
 fi
 
 
