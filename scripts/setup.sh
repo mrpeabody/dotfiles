@@ -31,8 +31,8 @@ BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 
 
 # Install and link
-sh "$BASE_DIR/scripts/install.sh" "$@"
-sh "$BASE_DIR/scripts/link.sh" "$@"
+bash "$BASE_DIR/scripts/install.sh" "$@"
+bash "$BASE_DIR/scripts/link.sh" "$@"
 
 
 # All done
