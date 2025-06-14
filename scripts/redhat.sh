@@ -52,7 +52,7 @@ if [[ "$*" == *"--nvm"* ]]; then
         touch "$local_file"
     fi
 
-    if ! grep -q 'nvm.sh$' "$local_file"; then
+    if ! grep -q 'nvm.sh' "$local_file"; then
         nvm_config_lines=(
             'export NVM_DIR="$HOME/.nvm"'
             '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm'

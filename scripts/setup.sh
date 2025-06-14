@@ -36,6 +36,8 @@ sh "$BASE_DIR/scripts/link.sh" "$@"
 
 
 # All done
-if [[ ! "$OSTYPE" == "darwin"* ]]; then
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    echo "Please restart your terminal to apply all the changes."
+else
     echo "Please reboot or logout/login to the system to apply all the changes."
 fi

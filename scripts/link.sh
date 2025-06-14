@@ -35,6 +35,14 @@ case "$OS" in
 esac
 
 
+# we might need to eval homebrew for fresh MacOS installations, otherwise it's not in the PATH
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    if ! command -v brew &> /dev/null; then
+        eval "$(/opt/homebrew/bin/brew shellenv)"
+    fi
+fi
+
+
 # Base dir is where the script is located
 BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 mkdir -p "$HOME/.config"
@@ -58,7 +66,7 @@ if [[ "$platform" == "linux" ]]; then
     ln -sf "$BASE_DIR/launchers/"* "$HOME/.local/share/applications/"
 fi
 
-if [[ "$*" == *"--zsh"* ]]; then
+if [[ "$*" == *"--zsh"* || "$OSTYPE" == "darwin"* ]]; then
     echo "Linking .zshrc..."
     ln -sf "$BASE_DIR/config/home/.zshrc" "$HOME/.zshrc"
 else
@@ -69,6 +77,7 @@ fi
 
 echo "Linking tmux config..."
 ln -sf "$BASE_DIR/config/home/.tmux.conf" "$HOME/.tmux.conf"
+
 tmux start-server
 tmux new-session -d
 $HOME/.tmux/plugins/tpm/scripts/install_plugins.sh
