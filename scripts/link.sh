@@ -10,7 +10,7 @@ Help()
    echo "This script links configuration files from this repo to proper locations in the home directory."
    echo "Run the scripts/install_packages.sh script first."
    echo
-   echo "Syntax: ./link_configs.sh [-h|--help|--zsh]"
+   echo "Syntax: ./link.sh [-h|--help|--zsh]"
    echo "options:"
    echo "[h | --help]     Print this Help."
    echo "--zsh            Link ZSH configuration files instead of BASH."

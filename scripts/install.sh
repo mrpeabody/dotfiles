@@ -45,6 +45,10 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then       # MacOS
 fi
 
 
+echo "Installing tmux package manager..."
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+
 # Detect if a user wants ZSH. For Macos, it's always ZSH
 if [[ "$*" == *"--zsh"* || "$OSTYPE" == "darwin"* ]]; then
     echo "Installing oh-my-zsh..."
@@ -54,10 +58,6 @@ else
     echo "Installing oh-my-bash..."
     git clone https://github.com/ohmybash/oh-my-bash.git ~/.oh-my-bash
 fi
-
-
-echo "Installing tmux package manager..."
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
 
 echo "Packages have been installed."
