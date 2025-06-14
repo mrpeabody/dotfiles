@@ -68,8 +68,8 @@ if [[ "$*" == *"--gui"* ]] && command -v stow &> /dev/null; then
 fi
 
 
-# Optional linux-only steps
-if [[ "$platform" == "linux" ]]; then
+# Optional linux-only steps: require [--gui] flag
+if [[ "$*" == *"--gui"* && "$platform" == "linux" ]]; then
     # Arch-based distros support flags files for chromium/electron-based applications
     if grep -qi "arch" /etc/os-release; then
         echo "Linking flags to ~/.config..."
