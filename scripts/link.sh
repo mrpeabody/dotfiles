@@ -35,12 +35,18 @@ case "$OS" in
 esac
 
 
-# we might need to eval homebrew for fresh MacOS installations
-# otherwise it might not be in the PATH yet
+# a few mac-specific things
 if [[ "$OSTYPE" == "darwin"* ]]; then
+    # we might need to eval homebrew for fresh MacOS installations
+    # otherwise it might not be in the PATH yet
     if ! command -v brew &> /dev/null; then
         eval "$(/opt/homebrew/bin/brew shellenv)"
     fi
+
+    # MPV on mac doesn't work well, and flameshot settings are incompatible
+    ignore_list='home|mpv|flameshot'
+else
+    ignore_list='home'
 fi
 
 
@@ -54,10 +60,10 @@ mkdir -p "$HOME/.config"
 
 if command -v stow &> /dev/null; then
     echo "Verifying app config directories can be symlinked using stow..."
-    stow -nv -t "$HOME/.config" -d "$BASE_DIR/config" --ignore="home" .
+    stow -nv -t "$HOME/.config" -d "$BASE_DIR/config" --ignore="$ignore_list" .
 
     echo "Stowing app config directories..."
-    stow -t "$HOME/.config" -d "$BASE_DIR/config" --ignore="home" .
+    stow -t "$HOME/.config" -d "$BASE_DIR/config" --ignore="$ignore_list" .
 fi
 
 

@@ -39,7 +39,7 @@ source $ZSH/oh-my-zsh.sh
 
 # oh-my-zsh post-hook settings
 unsetopt noclobber
-setopt noglob
+alias scp='noglob scp'
 
 
 # Source local per-machine customizations, if present

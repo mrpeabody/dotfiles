@@ -24,7 +24,6 @@ brew list ctags &>/dev/null || brew install ctags
 brew list autopep8 &>/dev/null || brew install autopep8
 brew list flake8 &>/dev/null || brew install flake8
 
-# brew list mpv &>/dev/null || brew install mpv
 brew list flameshot &>/dev/null || brew install flameshot
 brew list kitty &>/dev/null || brew install kitty
 
