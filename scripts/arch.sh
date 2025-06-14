@@ -37,7 +37,7 @@ fi
 
 
 # install and setup paru, if it's not yet installed
-if [ ! -f "/usr/bin/paru" ]; then
+if ! command -v paru &> /dev/null; then
     git clone https://aur.archlinux.org/paru-bin.git
     cd paru-bin
     makepkg --needed --noconfirm -si 
