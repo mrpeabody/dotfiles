@@ -10,9 +10,10 @@ Help()
    echo "This script links configuration files from this repo to proper locations in the home directory."
    echo "Run the scripts/install_packages.sh script first."
    echo
-   echo "Syntax: ./link.sh [-h|--help|--zsh]"
+   echo "Syntax: ./link.sh [-h|--help|--gui|--zsh]"
    echo "options:"
    echo "[h | --help]     Print this Help."
+   echo "--gui            Link GUI apps' configuration files, such as Kitty terminal, and MPV player."
    echo "--zsh            Link ZSH configuration files instead of BASH."
    echo
 }
@@ -58,7 +59,7 @@ BASE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 mkdir -p "$HOME/.config"
 
 
-if command -v stow &> /dev/null; then
+if [[ "$*" == *"--gui"* ]] && command -v stow &> /dev/null; then
     echo "Verifying app config directories can be symlinked using stow..."
     stow -nv -t "$HOME/.config" -d "$BASE_DIR/config" --ignore="$ignore_list" .
 

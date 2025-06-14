@@ -4,10 +4,8 @@ set -eo pipefail
 
 # install main packages
 sudo dnf makecache
-sudo dnf -y install less tar curl vim-enhanced git cmake
+sudo dnf -y install less tar curl git cmake
 sudo dnf -y install gcc-c++ net-tools
-sudo dnf -y install vim-X11
-sudo ln -sf /usr/bin/vimx /usr/local/bin/vim
 sudo dnf -y install tmux
 
 # not all RedHat clones are the same
@@ -16,14 +14,24 @@ RH_VERSION="$(cat /etc/os-release | grep 'REDHAT_SUPPORT_PRODUCT_VERSION=' \
 
 if [[ "$RH_VERSION" == "9" || "$RH_VERSION" == "10" ]]; then
     sudo dnf -y group install "Development Tools"
-    sudo dnf -y install util-linux-user python3-pip python3-devel python3-setuptools*
+    sudo dnf -y install util-linux-user python3-pip python3-devel "python3-setuptools*"
+    sudo dnf -y install vim-enhanced
     pip3 install --user flake8
     pip3 install --user autopep8
 else
     sudo dnf -y group install "development-tools"
     sudo dnf -y install python3-pip python3-devel python3-setuptools python3-wheel
     sudo dnf -y install python3-flake8 python3-autopep8
-    sudo dnf -y install stow kitty mpv direnv flameshot wl-clipboard
+    sudo dnf -y install direnv
+
+    # only install GUI packages if not WSL and [--gui] flag is set
+    if { [ -f /proc/version ] && ! grep -qi Microsoft /proc/version; } && [[ "$*" == *"--gui"* ]]; then
+        sudo dnf -y install vim-X11
+        sudo ln -sf /usr/bin/vimx /usr/local/bin/vim
+        sudo dnf -y install stow kitty mpv flameshot wl-clipboard
+    else
+        sudo dnf -y install vim-enhanced
+    fi
 fi
 
 

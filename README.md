@@ -2,7 +2,7 @@
 
 - Crossplatform: MacOS/Linux/WSL
 - Easy to use and modify
-- [**GNU Stow**](https://www.gnu.org/software/stow/) based
+- Uses [**GNU Stow**](https://www.gnu.org/software/stow/)
 
 
 ## Quick setup
@@ -16,7 +16,7 @@ git clone https://github.com/mrpeabody/dotfiles
 - run the `setup.sh` script:
 
 ```
-./scripts/setup.sh --nvm --zsh
+./scripts/setup.sh --nvm --zsh --gui
 ```
 
 That's it! This way, all required packages will be installed, config files are linked to corresponding places in `$HOME`.
@@ -28,6 +28,10 @@ Settings then are now synced with this repository.
   Comes with the current LTS version of [Node.js](https://nodejs.org/en/).
 - `--zsh` -- install, configure, and enable [ZSH](https://en.wikipedia.org/wiki/Z_shell) shell. 
   Comes with [oh-my-zsh](https://ohmyz.sh/) and [direnv](https://direnv.net/) enabled.
+- `--gui` -- install, and configure apps: 
+  - [**Kitty**](https://sw.kovidgoyal.net/kitty/) (GPU-accelerated crossplatform terminal emulator)
+  - [**Flameshot**](https://flameshot.org/) (best screenshot tool)
+  - [**MPV player**](https://mpv.io/) (GPU-accelerated crossplatform video/audio/YouTube/streaming player)
 
 
 **Bonus**: Arch users get [Paru](https://github.com/Morganamilo/paru) fully set up and configured for effortless AUR.* 

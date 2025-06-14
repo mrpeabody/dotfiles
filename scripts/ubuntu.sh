@@ -5,11 +5,17 @@ set -eo pipefail
 # install main packages
 sudo apt -y update
 sudo apt -y install curl git build-essential cmake net-tools
-sudo apt -y install vim-gtk3 wl-clipboard tmux stow direnv
 sudo apt -y install python-is-python3 python-dev-is-python3 python3-setuptools python3-pip python3-wheel
 sudo apt -y install flake8 python3-flake8 python3-autopep8
-sudo apt -y install fonts-powerline
-sudo apt -y install kitty mpv flameshot
+sudo apt -y install tmux direnv
+
+
+# only install GUI packages if not WSL and [--gui] flag is set
+if { [ -f /proc/version ] && ! grep -qi Microsoft /proc/version; } && [[ "$*" == *"--gui"* ]]; then
+    sudo apt -y install stow vim-gtk3 fonts-powerline wl-clipboard kitty mpv flameshot
+else
+    sudo apt -y install vim-nox
+fi
 
 
 # setup zsh, optionally

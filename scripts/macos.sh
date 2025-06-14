@@ -16,7 +16,6 @@ brew list git &>/dev/null || brew install git
 brew list vim &>/dev/null || brew install vim
 brew list cmake &>/dev/null || brew install cmake
 brew list tmux &>/dev/null || brew install tmux
-brew list stow &>/dev/null || brew install stow
 brew list direnv &>/dev/null || brew install direnv
 brew list python3 &>/dev/null || brew install python3
 brew list python-setuptools &>/dev/null || brew install python-setuptools
@@ -24,8 +23,14 @@ brew list ctags &>/dev/null || brew install ctags
 brew list autopep8 &>/dev/null || brew install autopep8
 brew list flake8 &>/dev/null || brew install flake8
 
-brew list flameshot &>/dev/null || brew install flameshot
-brew list kitty &>/dev/null || brew install kitty
+
+# only install GUI packages if [--gui] flag is set
+if [[ "$*" == *"--gui"* ]]; then
+    brew list stow &>/dev/null || brew install stow
+    brew list flameshot &>/dev/null || brew install flameshot
+    brew list kitty &>/dev/null || brew install kitty
+fi
+
 
 # setup NVM and LTS Node.js, optionally
 if [[ "$*" == *"--nvm"* ]]; then

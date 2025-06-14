@@ -3,12 +3,19 @@ set -eo pipefail
 
 
 # install main packages
-sudo pacman --needed --noconfirm -S less git cmake gcc ctags curl base-devel
+sudo pacman --needed --noconfirm -S less git cmake gcc ctags curl base-devel net-tools
 sudo pacman --needed --noconfirm -S python-pip python-wheel python-setuptools
 sudo pacman --needed --noconfirm -S python-flake8 autopep8
-sudo pacman --needed --noconfirm -S wl-clipboard net-tools
-yes | sudo pacman --needed -S gvim || true
-sudo pacman --needed --noconfirm -S stow kitty mpv tmux direnv flameshot
+sudo pacman --needed --noconfirm -S tmux direnv
+
+
+# only install GUI packages if not WSL and [--gui] flag is set
+if { [ -f /proc/version ] && ! grep -qi Microsoft /proc/version; } && [[ "$*" == *"--gui"* ]]; then
+    yes | sudo pacman --needed -S gvim || true
+    sudo pacman --needed --noconfirm -S stow kitty mpv flameshot wl-clipboard
+else
+    yes | sudo pacman --needed -S vim || true
+fi
 
 
 # setup zsh, optionally
