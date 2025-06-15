@@ -15,7 +15,7 @@ git clone https://github.com/mrpeabody/dotfiles
 - run the `setup.sh` script:
 
 ```
-./scripts/setup.sh --nvm --zsh --gui --fonts
+./scripts/setup.sh --vim --fonts --nvm --gui 
 ```
 
 That's it! This way, all required packages and fonts will be installed, config files are linked
@@ -23,6 +23,9 @@ to corresponding places in `$HOME`. Settings then are now synced with this repos
 
 ##### Optional flags:
 
+- `--vim[=<go,csharp,java,rust>]`: clone and run the [mrpeabody/vim_setup](https://github.com/mrpeabody/vim_setup) 
+  to install and setup VIM. If the repository directory already exists, the script will use it as is, so you can make
+  modifications to it, if needed. For more details, check the repo README.
 - `--nvm`: install, and enable [NVM](https://github.com/nvm-sh/nvm?tab=readme-ov-file#intro). 
   Comes with the current LTS version of [Node.js](https://nodejs.org/en/).
 - `--zsh`: install, configure, and enable [ZSH](https://en.wikipedia.org/wiki/Z_shell) shell. 
@@ -53,6 +56,7 @@ You can run individual scripts if you don't need the whole shebang. Available sc
   - For each distro/OS, there's a corresponding intallation script, for example: `scripts/arch.sh`
 - `scripts/link.sh` -- links configuration files to proper locations in the home directory, including `~/.bashrc` or `~/.zshrc`.
 - `scripts/fonts.sh` -- copies and enables coding fonts in the user directory.
+- `scripts/vim.sh` -- clones and sets up VIM config from the [mrpeabody/vim_setup](https://github.com/mrpeabody/vim_setup) repo.
 
 **link\.sh** and **install\.sh** scripts support optional flags:
 
@@ -76,6 +80,12 @@ You can run individual scripts if you don't need the whole shebang. Available sc
   - *For Linux distros*: create improved application launchers in `~/.local/share/applications`
   - *For Arch-based Linux distros*: chromium/electron app flags will be copied to `~/.config`
 
+**vim\.sh** script supports the `--vim=<languages>` flag. Available options: `go, csharp, java, rust`. 
+  - Example: `--vim=go,java`
+
+- `--nvm` -- install, and enable [NVM](https://github.com/nvm-sh/nvm?tab=readme-ov-file#intro). 
+  Comes with the current LTS version of [Node.js](https://nodejs.org/en/).
+
 Below you can find more details about each step, and instructions on how to do these steps separately,
 if so desired.
 
@@ -90,6 +100,11 @@ Link `config/home/.bashrc` or `config/home/.zshrc` (recommended):
 ```bash
 ln -s $PWD/config/home/.zshrc ~/.zshrc
 ```
+
+
+##### VIM
+
+See the [mrpeabody/vim_setup](https://github.com/mrpeabody/vim_setup) repo for more details.
 
 
 ##### TMUX
