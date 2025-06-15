@@ -15,6 +15,16 @@ export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;4;31m'
 
 
+# universal open function
+function open() {
+  if [[ "$OSTYPE" == "darwin"* ]]; then
+    command open "$@" >/dev/null 2>&1
+  else
+    xdg-open "$@" >/dev/null 2>&1
+  fi
+}
+
+
 # Path to your Oh My Zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
