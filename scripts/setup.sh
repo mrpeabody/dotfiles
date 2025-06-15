@@ -35,6 +35,12 @@ bash "$BASE_DIR/scripts/install.sh" "$@"
 bash "$BASE_DIR/scripts/link.sh" "$@"
 
 
+# Optionally install fonts, too
+if [[ "$*" == *"--fonts"* ]]; then
+    bash "$BASE_DIR/scripts/fonts.sh"
+fi
+
+
 # All done
 if [[ "$OSTYPE" == "darwin"* ]]; then
     echo "Please restart your terminal to apply all the changes."

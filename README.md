@@ -16,25 +16,30 @@ git clone https://github.com/mrpeabody/dotfiles
 - run the `setup.sh` script:
 
 ```
-./scripts/setup.sh --nvm --zsh --gui
+./scripts/setup.sh --nvm --zsh --gui --fonts
 ```
 
-That's it! This way, all required packages will be installed, config files are linked to corresponding places in `$HOME`.
-Settings then are now synced with this repository.
+That's it! This way, all required packages and fonts will be installed, config files are linked
+to corresponding places in `$HOME`. Settings then are now synced with this repository.
 
 ##### Optional flags:
 
-- `--nvm` -- install, and enable [NVM](https://github.com/nvm-sh/nvm?tab=readme-ov-file#intro). 
+- `--nvm`: install, and enable [NVM](https://github.com/nvm-sh/nvm?tab=readme-ov-file#intro). 
   Comes with the current LTS version of [Node.js](https://nodejs.org/en/).
-- `--zsh` -- install, configure, and enable [ZSH](https://en.wikipedia.org/wiki/Z_shell) shell. 
+- `--zsh`: install, configure, and enable [ZSH](https://en.wikipedia.org/wiki/Z_shell) shell. 
   Comes with [oh-my-zsh](https://ohmyz.sh/) and [direnv](https://direnv.net/) enabled.
-- `--gui` -- install, and configure apps: 
+- `--gui`: install, and configure apps: 
   - [**Kitty**](https://sw.kovidgoyal.net/kitty/) (GPU-accelerated crossplatform terminal emulator)
   - [**Flameshot**](https://flameshot.org/) (best screenshot tool)
   - [**MPV player**](https://mpv.io/) (GPU-accelerated crossplatform video/audio/YouTube/streaming player)
+- `--fonts`: install, and configure terminal/VIM fonts: 
+  - [**FiraCode**](https://www.programmingfonts.org/#firacode) Based on Mozilla's Fira font, includes NerdFont symbols.
+  - [**CascadiaCode**](https://www.programmingfonts.org/#cascadia-code) A fun, new monospaced font that includes
+    programming ligatures and is designed to enhance the modern look and feel of the Windows Terminal.
+    Used by default in the `kitty` configuration of this dotfiles repo.
 
 
-**Bonus**: Arch users get [Paru](https://github.com/Morganamilo/paru) fully set up and configured for effortless AUR.* 
+**Bonus**: Arch users get [Paru](https://github.com/Morganamilo/paru) fully set up and configured for effortless AUR. 
 It makes sense to clone and run the script in chroot after installing Arch, before rebooting into the installed system.
 
 **Bonus**: MacOS users get [Homebrew](https://brew.sh/) -- The Missing Package Manager for macOS.
@@ -56,6 +61,8 @@ Both scripts support optional flags:
   Comes with [oh-my-zsh](https://ohmyz.sh/) and [direnv](https://direnv.net/) enabled.
 - `--gui` -- install, and configure GUI apps, such as [Kitty](https://sw.kovidgoyal.net/kitty/),
   [Flameshot](https://flameshot.org/), and [MPV](https://mpv.io/)
+- `--fonts`: install, and configure terminal/VIM fonts -- [**FiraCode**](https://www.programmingfonts.org/#firacode) and
+  [**CascadiaCode**](https://www.programmingfonts.org/#cascadia-code) (recommended).
 
 `scripts/link.sh` will do the following:
 
