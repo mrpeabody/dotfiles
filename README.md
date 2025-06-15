@@ -58,6 +58,9 @@ You can run individual scripts if you don't need the whole shebang. Available sc
 - `scripts/fonts.sh` -- copies and enables coding fonts in the user directory.
 - `scripts/vim.sh` -- clones and sets up VIM config from the [mrpeabody/vim_setup](https://github.com/mrpeabody/vim_setup) repo.
 
+**vim\.sh** script supports the `--vim=<languages>` flag. Available options: `go, csharp, java, rust`. 
+  - Example: `--vim=go,java`
+
 **link\.sh** and **install\.sh** scripts support optional flags:
 
 - `--nvm` -- install, and enable [NVM](https://github.com/nvm-sh/nvm?tab=readme-ov-file#intro). 
@@ -79,9 +82,6 @@ You can run individual scripts if you don't need the whole shebang. Available sc
   - Link appplication settings to the `~/.config` directory
   - *For Linux distros*: create improved application launchers in `~/.local/share/applications`
   - *For Arch-based Linux distros*: chromium/electron app flags will be copied to `~/.config`
-
-**vim\.sh** script supports the `--vim=<languages>` flag. Available options: `go, csharp, java, rust`. 
-  - Example: `--vim=go,java`
 
 - `--nvm` -- install, and enable [NVM](https://github.com/nvm-sh/nvm?tab=readme-ov-file#intro). 
   Comes with the current LTS version of [Node.js](https://nodejs.org/en/).
