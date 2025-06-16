@@ -86,7 +86,36 @@ if [[ "$*" == *"--gui"* && "$platform" == "linux" ]]; then
         echo "Symlinked $HOME/.config/*.flags.conf -> $BASE_DIR/flags/*"
     fi
 
+
+    # Linking launchers
     launchers="$HOME/.local/share/applications"
+
+    # for Kitty, we need to dynamically generate a launcher before linking
+    kitty_file="$BASE_DIR/launchers/kitty.desktop"
+    mkdir -p "$(dirname "$desktop_file")"
+    cat > "$kitty_file" <<EOF
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=kitty
+GenericName=Terminal emulator
+Comment=Fast, feature-rich, GPU based terminal
+TryExec=kitty
+StartupNotify=true
+Exec=kitty -e
+Icon=${HOME}/.config/kitty/kitty.app.png
+Categories=System;TerminalEmulator;
+X-TerminalArgExec=--
+X-TerminalArgTitle=--title
+X-TerminalArgAppId=--class
+X-TerminalArgDir=--working-directory
+X-TerminalArgHold=--hold
+
+[Desktop Action New]
+Name=kitty
+Exec=kitty
+EOF
+
     echo "Linking launchers to $launchers..."
     mkdir -p "$launchers"
     for src in "$BASE_DIR/launchers/"*; do
