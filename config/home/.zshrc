@@ -44,6 +44,10 @@ source $ZSH/oh-my-zsh.sh
 # oh-my-zsh post-hook settings
 unsetopt noclobber
 alias scp='noglob scp'
+export HISTFILE="$HOME/.zsh_history"
+export HISTSIZE=1000000000
+export SAVEHIST=1000000000
+setopt EXTENDED_HISTORY
 
 
 # Source local per-machine customizations, if present

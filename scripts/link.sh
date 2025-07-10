@@ -71,7 +71,7 @@ fi
 # Optional linux-only steps: require [--gui] flag
 if [[ "$*" == *"--gui"* && "$platform" == "linux" ]]; then
     # Arch-based distros support flags files for chromium/electron-based applications
-    if grep -qi "arch" /etc/os-release; then
+    if grep -qi "arch" /etc/os-release && [[ "$*" == *"--flags"* ]]; then
         echo "Linking flags to ~/.config..."
         for src in "$BASE_DIR/flags/"*; do
             dst="$HOME/.config/$(basename "$src")"

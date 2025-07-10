@@ -34,6 +34,7 @@ to corresponding places in `$HOME`. Settings then are now synced with this repos
   - [**Kitty**](https://sw.kovidgoyal.net/kitty/) (GPU-accelerated crossplatform terminal emulator)
   - [**Flameshot**](https://flameshot.org/) (best screenshot tool)
   - [**MPV player**](https://mpv.io/) (GPU-accelerated crossplatform video/audio/YouTube/streaming player)
+  - Extra parameter `--flags`: *For Acrh-based Linux distros only* -- link flags for electron-based Apps (like Chrome). 
 - `--fonts`: install, and configure terminal/VIM fonts: 
   - [**FiraCode**](https://www.programmingfonts.org/#firacode) Based on Mozilla's Fira font, includes NerdFont symbols.
   - [**CascadiaCode**](https://www.programmingfonts.org/#cascadia-code) A fun, new monospaced font that includes
@@ -71,6 +72,7 @@ You can run individual scripts if you don't need the whole shebang. Available sc
   [Flameshot](https://flameshot.org/), and [MPV](https://mpv.io/)
 - `--fonts`: install, and configure terminal/VIM fonts -- [**FiraCode**](https://www.programmingfonts.org/#firacode) and
   [**CascadiaCode**](https://www.programmingfonts.org/#cascadia-code) (recommended).
+- `--flags`: *For Acrh-based Linux distros only* -- link flags for electron-based Apps (like Chrome). 
 
 **link\.sh** will do the following:
 
@@ -81,7 +83,7 @@ You can run individual scripts if you don't need the whole shebang. Available sc
 - If the `--gui` flag is used:
   - Link appplication settings to the `~/.config` directory
   - *For Linux distros*: create improved application launchers in `~/.local/share/applications`
-  - *For Arch-based Linux distros*: chromium/electron app flags will be copied to `~/.config`
+  - *For Arch-based Linux distros when `--flags` is also set*: chromium/electron app flags will be copied to `~/.config`
 
 - `--nvm` -- install, and enable [NVM](https://github.com/nvm-sh/nvm?tab=readme-ov-file#intro). 
   Comes with the current LTS version of [Node.js](https://nodejs.org/en/).
