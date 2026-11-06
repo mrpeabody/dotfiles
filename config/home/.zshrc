@@ -38,9 +38,6 @@ DISABLE_UPDATE_PROMPT="true"
 
 plugins=(git vi-mode direnv)
 
-source $ZSH/oh-my-zsh.sh
-
-
 # oh-my-zsh post-hook settings
 unsetopt noclobber
 alias scp='noglob scp'
@@ -54,3 +51,5 @@ setopt EXTENDED_HISTORY
 if [ -f "$HOME/.zshrc.local" ]; then
     source "$HOME/.zshrc.local"
 fi
+
+source $ZSH/oh-my-zsh.sh
